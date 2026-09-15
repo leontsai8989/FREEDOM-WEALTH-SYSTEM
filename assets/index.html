@@ -37,11 +37,69 @@
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft JhengHei', sans-serif;
-            background: #FAF9F6;
-            color: #333333;
+            background: #F8F4EC;
+            color: #173532;
             min-height: 100vh;
             overflow-x: hidden;
+            font-variant-numeric: tabular-nums;
         }
+
+        /* Refined financial numerals: clean editorial sans, not a developer-style mono face. */
+        .mono, input[type="number"], .asset-summary-card strong, .asset-net-amount strong,
+        .asset-allocation-card b, .wealth-metric strong, .freedom-meter strong,
+        .asset-net-value, .asset-cash-value, .number-font {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
+            font-weight: 900 !important;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -.045em !important;
+        }
+
+        .freedom-header {
+            min-height: 72px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 18px;
+            border-bottom: 1px solid #E9E1D3;
+            padding: 10px 4px 18px;
+        }
+
+        .freedom-brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
+        .freedom-mark { width: 39px; height: 39px; border-radius: 12px; display: grid; place-items: center; background: #173532; color: #F1C56F; font: italic 700 24px Georgia, serif; flex: 0 0 auto; }
+        .freedom-brand-title { color: #173532; font-size: 17px; line-height: 1; font-weight: 900; letter-spacing: .04em; }
+        .freedom-brand-sub { color: #56716B; font-size: 10px; font-weight: 800; letter-spacing: .06em; margin-top: 5px; white-space: nowrap; }
+        .freedom-tabs { display: flex; align-items: center; padding: 4px; gap: 3px; border-radius: 11px; background: #EDE7DC; }
+        .freedom-tab { border: 0; border-radius: 8px; padding: 8px 13px; font-size: 12px; font-weight: 900; color: #58716A; background: transparent; transition: .2s ease; white-space: nowrap; }
+        .freedom-tab.active { background: #FFFDF9; color: #173532; box-shadow: 0 1px 4px rgba(30, 51, 44, .14); }
+        .data-tools { justify-self: end; position: relative; }
+        .data-tools summary { list-style: none; cursor: pointer; color: #58716A; font-size: 12px; font-weight: 800; border: 1px solid #DED7C9; background: #FFFDF9; border-radius: 8px; padding: 8px 11px; }
+        .data-tools summary::-webkit-details-marker { display: none; }
+        .data-tools[open] summary { color: #173532; }
+        .data-tools-panel { position: absolute; z-index: 20; right: 0; top: calc(100% + 8px); width: 300px; background: #FFFDF9; border: 1px solid #DED7C9; border-radius: 12px; padding: 11px; box-shadow: 0 14px 32px rgba(23,53,50,.14); }
+        .data-tool { display: flex; width: 100%; align-items: center; gap: 8px; padding: 9px 10px; color: #425B55; background: transparent; border: 0; border-radius: 7px; text-align: left; font-size: 12px; font-weight: 800; }
+        .data-tool:hover { background: #F2EEE5; color: #173532; }
+        .data-tools-divider { height: 1px; background: #ECE5D9; margin: 6px 0; }
+        .wealth-shell { max-width: 1400px; margin: 0 auto; padding: 2px 0 48px; }
+        .wealth-hero { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(300px, .72fr); gap: 18px; }
+        .wealth-main-hero { min-height: 265px; overflow: hidden; position: relative; border-radius: 20px; background: #173B36; color: #fff; padding: 32px; }
+        .wealth-main-hero::after { content: ''; position: absolute; right: -75px; bottom: -250px; width: 410px; height: 410px; border: 1px solid rgba(230,190,116,.55); border-radius: 50%; box-shadow: 0 0 0 36px rgba(230,190,116,.08), 0 0 0 74px rgba(230,190,116,.05); }
+        .wealth-kicker { position: relative; z-index: 1; color: #F1C66E; font: 800 11px 'JetBrains Mono', monospace; letter-spacing: .13em; }
+        .wealth-main-hero h2 { position: relative; z-index: 1; max-width: 610px; margin: 10px 0 6px; font-size: clamp(29px, 3.4vw, 46px); line-height: 1.2; letter-spacing: -.055em; font-weight: 900; }
+        .wealth-main-hero h2 em { color: #F1C66E; font-family: Georgia, serif; font-weight: 700; }
+        .wealth-main-hero p { position: relative; z-index: 1; color: #DBE5E1; font-size: 14px; font-weight: 700; }
+        .stage-pill { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 13px; font-weight: 800; border: 1px solid rgba(255,255,255,.27); padding: 7px 12px; border-radius: 999px; margin-top: 17px; }
+        .stage-pill i { width: 8px; height: 8px; background: #F1C66E; border-radius: 50%; }
+        .freedom-meter { min-height: 265px; border-radius: 20px; background: #E9BB5D; padding: 27px; color: #173B36; display: flex; flex-direction: column; justify-content: space-between; }
+        .freedom-meter small { font-size: 12px; font-weight: 900; letter-spacing: .04em; }.freedom-meter strong { display: block; margin-top: 9px; font: 500 52px 'JetBrains Mono', monospace; letter-spacing: -.08em; }.freedom-meter strong span { font-size: 21px; letter-spacing: 0; }.meter-track { height: 8px; background: rgba(23,59,54,.17); border-radius: 999px; overflow: hidden; margin-top: 16px; }.meter-track i { height: 100%; display: block; border-radius: inherit; background: #173B36; }.freedom-meter p { font-size: 12px; font-weight: 800; margin: 0; }
+        .wealth-section-heading { display:flex; justify-content:space-between; align-items:end; margin: 31px 0 12px; }.wealth-section-heading h3 { margin:0; color:#173B36; font-size:19px; font-weight:900; letter-spacing:-.04em; }.wealth-section-heading p { margin:0; color:#58716A; font-size:12px; font-weight:700; }
+        .wealth-metrics { display:grid; grid-template-columns:repeat(4, 1fr); gap:13px; }.wealth-metric { background:#FFFDF9; border:1px solid #DED7C9; border-radius:15px; padding:18px; min-height:126px; }.wealth-metric-label { display:flex; justify-content:space-between; color:#58716A; font-size:12px; font-weight:900; }.wealth-metric-label i { color:#D9A948; font-style:normal; }.wealth-metric strong { display:block; font:500 28px 'JetBrains Mono',monospace; letter-spacing:-.07em; color:#173B36; margin-top:8px; }.wealth-metric strong span { font: 700 14px 'Helvetica Neue',sans-serif; letter-spacing:0; }.wealth-metric small { color:#55745B; font-size:11px; font-weight:800; display:block; margin-top:8px; }.wealth-metric small.warn { color:#B75F51; }
+        .wealth-link-strip { margin-top:13px; display:grid; grid-template-columns:repeat(4,1fr); gap:8px; padding:10px; background:#F1EEE6; border-radius:12px; }.wealth-link-item { padding:4px 7px; border-left:2px solid #D9A948; }.wealth-link-item b { display:block; color:#173B36; font-size:11px; }.wealth-link-item span { color:#58716A; display:block; font-size:10px; margin-top:2px; line-height:1.35; }.wealth-link-status { color:#52765B !important; font-weight:800; }
+        .wealth-main-grid { display:grid; grid-template-columns:1.08fr .92fr; gap:20px; margin-top:20px; }.wealth-panel { background:#FFFDF9; border:1px solid #DED7C9; border-radius:17px; padding:24px; }.wealth-panel h3 { margin:0; color:#173B36; font-size:18px; font-weight:900; letter-spacing:-.04em; }.wealth-panel > p { color:#58716A; font-size:12px; font-weight:700; margin:4px 0 16px; }
+        .wealth-task { display:grid; grid-template-columns:24px 1fr auto; align-items:center; gap:11px; border-top:1px solid #ECE5D9; padding:13px 0; }.wealth-task:first-of-type { border-top:0; }.wealth-check { appearance:none; width:20px; height:20px; border:1px solid #B9C5BE; border-radius:6px; background:#fff; position:relative; }.wealth-check:checked { background:#5D7F67; border-color:#5D7F67; }.wealth-check:checked::after { content:'✓'; position:absolute; color:white; left:3px; top:-2px; font-size:14px; font-weight:900; }.wealth-task b { display:block; color:#173B36; font-size:14px; }.wealth-task span { display:block; color:#58716A; font-size:11px; margin-top:2px; font-weight:600; }.task-state { border-radius:999px; padding:4px 8px; font-size:10px !important; font-weight:900 !important; color:#A5665A !important; background:#F6ECE9; white-space:nowrap; }.task-state.done { color:#45644E !important; background:#EDF4ED; }
+        .wealth-road { position:relative; display:grid; grid-template-columns:repeat(5,1fr); gap:4px; margin:20px 0 21px; }.wealth-road::before { content:''; position:absolute; height:2px; background:#DAD1C3; left:9%; right:9%; top:28px; }.wealth-stage { position:relative; z-index:1; text-align:center; }.wealth-stage-dot { height:56px; width:56px; margin:0 auto 8px; border-radius:50%; display:grid; place-items:center; background:#F1EDE5; border:1px solid #DAD1C3; color:#58716A; font:500 15px 'JetBrains Mono',monospace; }.wealth-stage.done .wealth-stage-dot { background:#5D7F67; border-color:#5D7F67; color:white; }.wealth-stage.active .wealth-stage-dot { background:#173B36; border:5px solid #E9BB5D; color:#fff; }.wealth-stage b { display:block; font-size:12px; color:#3E5B54; }.wealth-stage span { display:block; font-size:10px; color:#58716A; margin-top:3px; line-height:1.3; }.wealth-focus { background:#F3EFE6; border-radius:9px; padding:12px; font-size:12px; line-height:1.5; color:#52645E; }.wealth-focus b { color:#173B36; }
+        .wealth-bottom { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px; }.safety-panel { background:#173B36; color:#fff; border-radius:17px; padding:24px; }.safety-panel h3 { margin:5px 0 0; font-size:18px; }.safety-panel p { color:#D4E0DB; font-size:12px; margin:7px 0 15px; }.safety-bar-row { margin:12px 0; }.safety-bar-label { display:flex; justify-content:space-between; font-size:11px; color:#D8E4DF; }.safety-bar { height:7px; background:#365550; border-radius:99px; margin-top:5px; overflow:hidden; }.safety-bar i { display:block; height:100%; background:#E9BB5D; border-radius:inherit; }.wealth-profile { display:grid; grid-template-columns:1fr 1fr; gap:10px; }.wealth-profile label { color:#58716A; font-size:11px; font-weight:800; }.wealth-profile input { width:100%; margin-top:5px; border:1px solid #DED7C9; background:#fff; border-radius:8px; padding:8px; color:#173B36; font:700 13px 'JetBrains Mono',monospace; outline:none; }.wealth-profile input:focus { border-color:#D9A948; }
+        @media (max-width: 900px) { .wealth-hero,.wealth-main-grid,.wealth-bottom { grid-template-columns:1fr; }.wealth-metrics,.wealth-link-strip { grid-template-columns:repeat(2,1fr); }.wealth-main-hero,.freedom-meter { min-height:220px; } }.@media (max-width: 520px) { .wealth-metrics { gap:9px; }.wealth-link-strip { grid-template-columns:1fr 1fr; }.wealth-metric { padding:14px; min-height:112px; }.wealth-metric strong { font-size:23px; }.wealth-section-heading p { display:none; }.wealth-main-hero { padding:23px; }.wealth-panel,.safety-panel { padding:18px; }.wealth-stage-dot { width:43px;height:43px; }.wealth-road::before { top:21px; }.wealth-stage b { font-size:10px; }.wealth-stage span { display:none; }.wealth-profile { grid-template-columns:1fr; } }
+        @media (max-width: 768px) { .freedom-header { grid-template-columns: 1fr auto; padding-bottom: 12px; } .freedom-tabs { grid-column: 1 / -1; grid-row: 2; justify-self: center; } .freedom-brand-sub { font-size: 9px; } .data-tools-panel { width: 270px; } }
 
         .glass {
             background: #FFFFFF;
@@ -49,6 +107,21 @@
             border-radius: 4px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
+        .asset-workspace { display:grid; grid-template-columns:230px minmax(0,1fr); align-items:stretch; }
+        .asset-allocation { display:flex; flex-direction:column; gap:8px; padding:14px; background:#FBFAF6; border-right:1px solid #EAE8E3; }
+        .asset-allocation-card { border:1px solid #ECE7DC; background:#fff; border-radius:10px; padding:10px 11px; min-width:0; }
+        .asset-allocation-card span { display:block; color:#58716A; font-size:10px; font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }.asset-allocation-card b { display:block; color:#173B36; font:700 14px 'JetBrains Mono',monospace; letter-spacing:-.06em; margin-top:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }.asset-allocation-card small { color:#88948E; font-size:9px; font-weight:800; display:block; margin-top:4px; }
+        .asset-allocation-card.cash { border-top:3px solid #55A77A; }.asset-allocation-card.deposit { border-top:3px solid #5F91C8; }.asset-allocation-card.investment { border-top:3px solid #D7A84B; }.asset-allocation-card.crypto { border-top:3px solid #9A72BE; }.asset-allocation-card.liability { border-top:3px solid #D96B6B; }.asset-allocation-card.liability b { color:#D65757; }
+        .account-chip { display:inline-flex; align-items:center; border-radius:999px; padding:3px 7px; font-size:9px; font-weight:900; white-space:nowrap; }.account-chip.cash { background:#E6F5EC; color:#3D7D58; }.account-chip.deposit { background:#E8F0FA; color:#4979AD; }.account-chip.investment { background:#FBF0D8; color:#A16E15; }.account-chip.crypto { background:#F1E8F8; color:#775396; }.account-chip.policy { background:#F9E9D8; color:#AA6D2D; }.account-chip.liability { background:#FCE9E9; color:#C95656; }.account-chip.other { background:#EEF0F0; color:#63716C; }
+        /* Let the whole page scroll naturally; a nested account-list scrollbar is awkward on desktop. */
+        .account-table-scroll { max-height: none; overflow: visible; }
+        .account-drag-handle { width:22px; height:28px; display:grid; place-items:center; flex:0 0 auto; color:#A5B1AB; background:transparent; border:0; border-radius:7px; cursor:grab; font-size:18px; line-height:1; letter-spacing:-4px; touch-action:none; }
+        .account-drag-handle:hover { color:#173B36; background:#F1EEE6; }.account-drag-handle:active { cursor:grabbing; }
+        /* Amounts are typed deliberately—hide browser-provided increment/decrement controls. */
+        input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        @media (max-width: 700px) { .asset-workspace { display:block; }.asset-allocation { display:grid; grid-template-columns:repeat(2,1fr); border-right:0; border-bottom:1px solid #EAE8E3; }.asset-allocation-card:last-child { grid-column:span 2; } }
 
         .card-wrap {
             background: #FFFFFF;
@@ -202,6 +275,27 @@
         .glass {
             transition: background 0.3s ease, border 0.3s ease;
         }
+
+        /* Asset ledger: the same calm, editorial visual language as Wealth Path */
+        .asset-ledger-shell { max-width: 1400px; margin: 0 auto; }
+        .asset-ledger-hero { display:grid; grid-template-columns:minmax(0, 1.45fr) minmax(300px, .85fr); gap:18px; }
+        .asset-ledger-intro { min-height:190px; position:relative; overflow:hidden; border-radius:20px; padding:27px 30px; background:#173B36; color:#fff; }
+        .asset-ledger-intro::after { content:''; position:absolute; width:280px; height:280px; border:1px solid rgba(241,198,110,.58); border-radius:50%; right:-82px; bottom:-145px; box-shadow:0 0 0 29px rgba(241,198,110,.09), 0 0 0 59px rgba(241,198,110,.05); }
+        .asset-ledger-kicker { position:relative; z-index:1; color:#F1C66E; font:800 10px 'JetBrains Mono',monospace; letter-spacing:.14em; }
+        .asset-ledger-intro h2 { position:relative; z-index:1; color:#fff; font-size:26px; line-height:1.22; font-weight:900; letter-spacing:-.055em; margin:8px 0 3px; }
+        .asset-ledger-intro h2 em { color:#F1C66E; font-family:Georgia,serif; font-weight:700; }
+        .asset-ledger-intro p { position:relative; z-index:1; color:#D5E2DD; margin:0; font-size:12px; font-weight:700; }
+        .asset-net-amount { position:relative; z-index:1; display:flex; align-items:baseline; gap:8px; margin-top:17px; }.asset-net-amount span { color:#D5E2DD; font-size:11px; font-weight:800; }.asset-net-amount strong { color:#fff; font:500 27px 'JetBrains Mono',monospace; letter-spacing:-.07em; }
+        .asset-ledger-summary { display:grid; grid-template-columns:1fr 1fr; gap:12px; }.asset-summary-card { min-height:89px; padding:16px 17px; border:1px solid #DED7C9; border-radius:16px; background:#FFFDF9; }.asset-summary-card b { display:block; color:#58716A; font-size:11px; font-weight:900; }.asset-summary-card strong { display:block; color:#173B36; font:500 22px 'JetBrains Mono',monospace; letter-spacing:-.07em; margin-top:8px; }.asset-summary-card strong.negative { color:#C85D5C; }.asset-summary-card small { display:block; color:#74867F; font-size:10px; font-weight:800; margin-top:5px; }
+        .asset-trend-card { background:#FFFDF9 !important; border-color:#DED7C9 !important; border-radius:17px !important; box-shadow:none !important; }
+        .asset-trend-card h3 { color:#173B36 !important; }.asset-trend-card .trend-subtitle { color:#58716A !important; }.asset-periods { background:#F1EEE6 !important; border-color:#E5DED0 !important; }.asset-record-btn { border-color:#DED7C9 !important; color:#173B36 !important; background:#FFFDF9 !important; }
+        .asset-balance-card { border-color:#DED7C9 !important; border-radius:17px !important; box-shadow:none !important; }.asset-balance-title { background:#FFFDF9 !important; border-color:#ECE5D9 !important; }.asset-balance-title h2 { color:#173B36 !important; font-size:21px !important; }.asset-balance-title p { color:#58716A !important; }.asset-net-label { color:#C48D2C !important; }.asset-net-value { color:#173B36 !important; }
+        .asset-allocation { background:#F3EFE6; border-color:#E4DCCD; padding:15px; gap:10px; }.asset-allocation-card { background:#FFFDF9; border-color:#DED7C9; border-radius:12px; padding:12px; box-shadow:0 2px 7px rgba(44,58,52,.035); }.asset-allocation-card span { color:#58716A; }.asset-allocation-card b { color:#173B36; font-size:15px; }.asset-allocation-card small { color:#82918B; }
+        .asset-detail-area { background:#FFFDF9; }.asset-detail-area tr:hover { background:#F7F3EA !important; }.asset-detail-area .edit-input:focus { border-color:#D9A948 !important; }.asset-total-row { background:#F3EFE6 !important; }.asset-liability-row { background:#FFF7F5 !important; }.asset-cash-row { background:#173B36 !important; border:0 !important; }.asset-cash-row td { color:#fff !important; }.asset-cash-row .asset-cash-value { color:#F1C66E !important; }
+        .asset-add-row { background:#F3EFE6 !important; border-top:1px solid #E4DCCD; }.asset-add-row input,.asset-add-row select { border-color:#DED7C9 !important; }.asset-add-row button { background:#173B36 !important; color:#fff !important; border-color:#173B36 !important; }
+        .asset-loan-card { border-color:#DED7C9 !important; border-radius:17px !important; box-shadow:none !important; }.asset-loan-head { background:#FFFDF9 !important; border-color:#ECE5D9 !important; }.asset-loan-head h3 { color:#173B36 !important; font-size:15px !important; }.asset-loan-head p { color:#58716A !important; }.asset-loan-card .edit-input { border-color:#DED7C9 !important; }.asset-loan-card .edit-input:focus { border-color:#D9A948 !important; }.asset-loan-footer { background:#F3EFE6; }.asset-loan-item { border-color:#ECE5D9 !important; background:#FFFDF9; }
+        @media (max-width: 900px) { .asset-ledger-hero { grid-template-columns:1fr; }.asset-ledger-intro { min-height:174px; } }
+        @media (max-width: 520px) { .asset-ledger-intro { padding:23px; }.asset-ledger-summary { gap:9px; }.asset-summary-card { padding:13px; }.asset-summary-card strong { font-size:18px; } }
     </style>
 </head>
 
@@ -209,125 +303,121 @@
     <div id="app" v-cloak class="max-w-[1600px] mx-auto flex flex-col h-[calc(100vh-3rem)]">
 
         <!-- ====== Header & Navigation ====== -->
-        <header class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 shrink-0 border-b border-[#EAE8E3] pb-4">
-            <div class="flex items-center gap-4">
-                <a href="../" class="w-12 h-12 bg-[#FFFFFF] border border-[#EAE8E3] rounded-md flex items-center justify-center hover:bg-[#F5F5F0] transition-colors cursor-pointer text-[#555]">
-                    <i class="fa-solid fa-house"></i>
-                </a>
-                <div>
-                    <h1 class="text-xl font-bold tracking-widest text-[#333] leading-tight">資產紀錄表</h1>
-                    <div class="flex items-center gap-2 mt-1">
-                        <span class="text-[10px] text-[#999] tracking-widest uppercase">ASSET MANAGEMENT</span>
-                        <div v-if="isSyncing" class="flex items-center gap-1.5 px-2 py-0.5 bg-[#FAF9F6] rounded border border-[#EAE8E3]">
-                            <span class="w-1.5 h-1.5 bg-[#D4C4B7] rounded-full animate-pulse"></span>
-                            <span class="text-[9px] font-bold text-[#777] uppercase">{{ syncStatus || 'Syncing...' }}</span>
-                        </div>
-                    </div>
-                </div>
+        <header class="freedom-header mb-6 shrink-0">
+            <div class="freedom-brand">
+                <div class="freedom-mark">f</div>
+                <div><div class="freedom-brand-title">自由路徑</div><div class="freedom-brand-sub">FREEDOM WEALTH SYSTEM</div></div>
             </div>
 
-            <nav class="flex flex-wrap items-center gap-2 md:gap-3">
-                <!-- Excel Import/Export -->
-                <div class="flex items-center gap-1">
-                    <input type="file" ref="excelInput" @change="importExcel" class="hidden" accept=".xlsx,.xls">
-                    <button @click="$refs.excelInput.click()" class="px-3 py-1.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-md text-xs hover:bg-emerald-100 transition-colors flex items-center gap-1.5 font-bold shadow-sm" title="匯入 Excel">
-                        <i class="fa-solid fa-file-excel"></i> 匯入 Excel
-                    </button>
-                    <button @click="exportExcel" class="px-3 py-1.5 bg-white border border-[#EAE8E3] text-[#555] rounded-md text-xs hover:bg-[#F5F5F0] transition-colors flex items-center gap-1.5 font-bold shadow-sm" title="匯出 Excel">
-                        <i class="fa-solid fa-file-excel"></i> 匯出 Excel
-                    </button>
-                </div>
-
-                <div class="h-4 w-[1px] bg-[#EAE8E3] mx-1 hidden sm:block"></div>
-                
-                <!-- Manual Sync Buttons -->
-                <button @click="downloadFromFirebase(false)" class="px-3 py-1.5 bg-white border border-[#EAE8E3] text-[#555] rounded-md text-xs hover:bg-[#F5F5F0] transition-colors flex items-center gap-1.5 font-bold shadow-sm" title="手動下載最新雲端資料">
-                    <i class="fa-solid fa-cloud-arrow-down"></i> 雲端下載
+            <nav class="freedom-tabs" aria-label="主要分頁">
+                <button @click="currentView = 'wealth'"
+                    class="freedom-tab" :class="{ active: currentView === 'wealth' }">
+                    財富五階段
                 </button>
-                <button @click="uploadToFirebase(false)" class="px-3 py-1.5 bg-white border border-[#EAE8E3] text-[#555] rounded-md text-xs hover:bg-[#F5F5F0] transition-colors flex items-center gap-1.5 font-bold shadow-sm" title="強制將目前資料覆蓋至雲端">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> 雲端上傳
+                <button @click="currentView = 'deposits'"
+                    class="freedom-tab" :class="{ active: currentView === 'deposits' }">
+                    資產負債表
                 </button>
-
-                <div class="h-4 w-[1px] bg-[#EAE8E3] mx-1 hidden sm:block"></div>
-
-                <!-- Google Auth & Auto Sync -->
-                <div v-if="!currentUser" class="flex items-center">
-                    <button @click="loginWithGoogle" class="px-3 py-1.5 bg-white border border-[#EAE8E3] text-[#333] rounded-md text-xs hover:bg-slate-50 transition-colors flex items-center gap-1.5 font-bold shadow-sm">
-                        <i class="fa-brands fa-google text-red-500"></i> 登入同步
-                    </button>
-                </div>
-                <div v-else class="flex items-center gap-2 md:gap-3 bg-white border border-[#EAE8E3] rounded-md px-2 py-1 shadow-sm">
-                    <img :src="currentUser.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'" class="w-6 h-6 rounded-full border border-slate-200">
-                    
-                    <div class="flex items-center gap-1.5 md:gap-2 border-l border-r border-[#EAE8E3] px-2">
-                        <span class="text-[10px] font-bold text-[#777] hidden md:inline">自動同步</span>
-                        <div @click="isAutoSync = !isAutoSync"
-                            class="w-8 h-4 rounded-full p-0.5 cursor-pointer transition-colors duration-300 flex items-center"
-                            :class="isAutoSync ? 'bg-indigo-500' : 'bg-slate-300'">
-                            <div class="w-3 h-3 bg-white rounded-full transition-transform duration-300 shadow-sm"
-                                :class="{'translate-x-4': isAutoSync}"></div>
-                        </div>
-                    </div>
-
-                    <button @click="logout" class="px-2 py-1 text-xs text-[#777] hover:text-rose-500 font-bold transition-colors">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </button>
-                </div>
             </nav>
+
+            <details class="data-tools" :open="toolsOpen" @mouseenter="toolsOpen = true" @mouseleave="toolsOpen = false" @toggle="toolsOpen = $event.target.open">
+                <summary>管理資料</summary>
+                <div class="data-tools-panel">
+                    <input type="file" ref="excelInput" @change="importExcel" class="hidden" accept=".xlsx,.xls">
+                    <button @click="$refs.excelInput.click()" class="data-tool" title="匯入 Excel">
+                        <i class="fa-solid fa-file-import"></i> 匯入 Excel（新版／舊版）
+                    </button>
+                    <button @click="exportExcel" class="data-tool" title="匯出 Excel">
+                        <i class="fa-solid fa-file-export"></i> 匯出 Excel（完整備份）
+                    </button>
+                    <div class="data-tools-divider"></div>
+                    <button @click="downloadFromFirebase(false)" class="data-tool" title="手動下載最新雲端資料"><i class="fa-solid fa-cloud-arrow-down"></i> 雲端下載</button>
+                    <button @click="uploadToFirebase(false)" class="data-tool" title="強制將目前資料覆蓋至雲端"><i class="fa-solid fa-cloud-arrow-up"></i> 雲端上傳</button>
+                    <div class="data-tools-divider"></div>
+                    <button v-if="!currentUser" @click="loginWithGoogle" class="data-tool"><i class="fa-brands fa-google text-red-500"></i> 登入同步</button>
+                    <template v-else>
+                        <div class="px-2 py-1 text-[10px] font-bold text-[#58716A] flex items-center gap-2"><img :src="currentUser.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'" class="w-5 h-5 rounded-full"><span>已登入・{{ isAutoSync ? '自動同步中' : '手動同步' }}</span></div>
+                        <button @click="isAutoSync = !isAutoSync" class="data-tool"><i class="fa-solid fa-rotate"></i>{{ isAutoSync ? '停用自動同步' : '啟用自動同步' }}</button>
+                        <button @click="logout" class="data-tool text-rose-500"><i class="fa-solid fa-right-from-bracket"></i>登出</button>
+                    </template>
+                    <div v-if="isSyncing" class="px-2 pt-2 text-[10px] font-bold text-[#A76B53]">{{ syncStatus || '同步中…' }}</div>
+                </div>
+            </details>
         </header>
 
         <!-- ====== Main Content Area ====== -->
         <main class="flex-1 flex flex-col min-h-0">
 
             <!-- ====== Main Content (Balance Sheet) ====== -->
-            <div class="flex-1 flex flex-col gap-6 animate-in slide-in-from-bottom duration-500 overflow-y-auto custom-scrollbar p-1">
+            <div v-show="currentView === 'deposits'" class="flex-1 flex flex-col gap-6 animate-in slide-in-from-bottom duration-500 overflow-y-auto custom-scrollbar p-1">
 
-                <div class="max-w-5xl mx-auto w-full space-y-6 pb-20">
+                <div class="asset-ledger-shell w-full space-y-5 pb-20">
 
-                    <div class="glass rounded-md p-6 flex flex-col shadow-sm h-64 shrink-0 border-[#EAE8E3]">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-[10px] font-black text-[#999] uppercase tracking-widest">個人淨資產趨勢 (Net
-                                Asset Trend)</h3>
-                            <button @click="recordHistory"
-                                class="bg-white border border-[#EAE8E3] text-[#333] px-3 py-1 rounded-md text-[9px] font-black hover:bg-[#FAF9F6] border border-[#EAE8E3]0 transition-all shadow-sm shadow-indigo-500/20">紀錄今日結餘</button>
+                    <section class="asset-ledger-hero">
+                        <article class="asset-ledger-intro">
+                            <div class="asset-ledger-kicker">PERSONAL BALANCE SHEET · LIVE</div>
+                            <h2>看見每一筆資產，<br><em>讓財富更有方向。</em></h2>
+                            <p>帳戶、投資與負債同步整理，淨資產會隨你的更新即時變動。</p>
+                            <div class="asset-net-amount"><span>目前個人淨值</span><strong>NT$ {{ myNetAssets.toLocaleString() }}</strong></div>
+                        </article>
+                        <section class="asset-ledger-summary" aria-label="資產摘要">
+                            <article class="asset-summary-card"><b>總資產</b><strong>NT$ {{ totalBankAssets.toLocaleString() }}</strong><small>所有資產帳戶</small></article>
+                            <article class="asset-summary-card"><b>總負債</b><strong class="negative">NT$ {{ totalLiabilities.toLocaleString() }}</strong><small>含信貸與卡費</small></article>
+                            <article class="asset-summary-card"><b>可用現金</b><strong>NT$ {{ availableCash.toLocaleString() }}</strong><small>已勾選可動用帳戶</small></article>
+                            <article class="asset-summary-card"><b>投資資產占比</b><strong>{{ wealthInvestmentRate }}%</strong><small>投資、保單與加密資產</small></article>
+                        </section>
+                    </section>
+
+                    <div class="asset-trend-card glass rounded-md p-5 flex flex-col shadow-sm h-64 shrink-0 border-[#EAE8E3] overflow-hidden">
+                        <div class="flex justify-between items-center mb-3">
+                            <div><h3 class="text-[10px] font-black text-[#999] uppercase tracking-widest">個人淨資產趨勢 (Net Asset Trend)</h3><p class="trend-subtitle text-[9px] font-bold text-[#9AA49F] mt-1">以各區間最後一筆結餘呈現</p></div>
+                            <div class="flex items-center gap-2"><div class="asset-periods flex p-1 rounded-md bg-[#F2F0EA] border border-[#EAE8E3]"><button v-for="period in [{ key: 'day', label: '日' }, { key: 'month', label: '月' }, { key: 'year', label: '年' }]" :key="period.key" @click="trendPeriod = period.key" class="px-2.5 py-1 rounded text-[10px] font-black transition-all" :class="trendPeriod === period.key ? 'bg-white text-[#173B36] shadow-sm' : 'text-[#7B8983]'">{{ period.label }}</button></div><button @click="recordHistory" class="asset-record-btn bg-white border border-[#EAE8E3] text-[#333] px-3 py-1.5 rounded-md text-[9px] font-black hover:bg-[#FAF9F6] transition-all shadow-sm">紀錄今日結餘</button></div>
                         </div>
-                        <div class="flex-1">
+                        <div class="flex-1 min-h-0 overflow-hidden">
                             <canvas ref="historyChartRef"></canvas>
                         </div>
                     </div>
 
                     <!-- Main Balance Sheet Only -->
-                    <div class="max-w-2xl mx-auto w-full">
-                        <div class="glass rounded-md overflow-hidden shadow-sm border-[#EAE8E3] h-fit">
+                    <div class="w-full">
+                        <div class="asset-balance-card glass rounded-md overflow-hidden shadow-sm border-[#EAE8E3] h-fit">
                             <div
-                                class="px-8 py-6 border-b border-[#EAE8E3]/50 flex justify-between items-center bg-[#FAF9F6]">
+                                class="asset-balance-title px-8 py-6 border-b border-[#EAE8E3]/50 flex justify-between items-center bg-[#FAF9F6]">
                                 <div>
                                     <h2 class="text-xl font-bold tracking-wide text-[#333] tracking-tight">資產負債表</h2>
                                     <p class="text-[10px] font-bold text-[#777] uppercase tracking-widest mt-1">
                                         Accounts & Liabilities</p>
                                     <div class="mt-2 flex items-center gap-2">
                                         <span class="text-xs font-bold text-[#777]">美元匯率:</span>
-                                        <input type="number" v-model.number="usdRate" @change="saveData" class="w-20 edit-input border border-[#EAE8E3]">
+                                        <input type="number" v-model.number="usdRate" @change="saveData" @keydown.enter.prevent="$event.target.blur()" class="w-20 edit-input border border-[#EAE8E3]">
                                     </div>
                                 </div>
                                 <div class="text-right">
                                     <span
-                                        class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-1">個人淨值
+                                        class="asset-net-label text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-1">個人淨值
                                         (My Net)</span>
-                                    <span class="text-2xl font-bold tracking-wide mono text-[#333]">NT$ {{
+                                    <span class="asset-net-value text-2xl font-bold tracking-wide mono text-[#333]">NT$ {{
                                         myNetAssets.toLocaleString() }}</span>
                                 </div>
                             </div>
 
+                            <div class="asset-workspace">
+                            <section class="asset-allocation" aria-label="資產配置總覽">
+                                <article v-for="item in assetCategorySummaries" :key="item.key" class="asset-allocation-card" :class="item.key"><span>{{ item.icon }} {{ item.label }}</span><b>NT$ {{ item.amount.toLocaleString() }}</b><small>{{ item.count }} 筆帳戶</small></article>
+                            </section>
+
+                            <div class="asset-detail-area">
+
+                            <div class="account-table-scroll">
                             <table class="w-full text-left">
                                 <transition-group tag="tbody" name="list" class="divide-y divide-slate-50">
-                                    <tr v-for="(acc, idx) in bankAccounts" :key="acc.name" draggable="true"
-                                        @dragstart="dragStart($event, idx)" @dragover.prevent="dragOver($event, idx)"
-                                        @drop="dragEnd"
+                                    <tr v-for="(acc, idx) in bankAccounts" :key="acc.name"
+                                        @dragover.prevent="dragOver($event, idx)" @drop.prevent="dragEnd"
                                         class="hover:bg-[#FAF9F6]/50 transition-colors group cursor-pointer">
                                         <td class="px-6 py-4">
                                             <div class="flex items-center gap-3">
-                                                <input type="checkbox" v-model="acc.checked" @change="saveData"
+                                                <button type="button" class="account-drag-handle" draggable="true" @dragstart.stop="dragStart($event, idx)" @dragend="dragEnd" title="拖曳排序" aria-label="拖曳排序">⠿</button>
+                                                <input type="checkbox" v-model="acc.checked" @change="saveData" :aria-label="`將 ${acc.name} 納入可用現金`" title="勾選後納入財富五階段的可用現金與緊急預備金計算"
                                                     class="w-4 h-4 rounded border-slate-300 text-[#333] focus:ring-indigo-500 cursor-pointer">
                                                 <div class="w-7 h-7 rounded-md flex items-center justify-center text-xs"
                                                     :class="acc.type === 'asset' ? 'bg-emerald-100 text-emerald-600' : 'bg-rose-100 text-rose-600'">
@@ -336,6 +426,7 @@
                                                 <input v-model="acc.name" @change="saveData"
                                                     class="text-sm font-bold tracking-wide text-[#333] bg-transparent border-b border-transparent focus:border-indigo-300 outline-none w-full cursor-text"
                                                     @mousedown.stop>
+                                                <span class="account-chip" :class="accountCategoryMeta(acc).key">{{ accountCategoryMeta(acc).label }}</span>
                                                 <span v-if="acc.pnl !== undefined"
                                                     :class="acc.pnl >= 0 ? 'text-emerald-500' : 'text-rose-500'"
                                                     class="text-[10px] whitespace-nowrap font-bold">
@@ -349,7 +440,7 @@
                                                     <option value="TWD">台幣</option>
                                                     <option value="USD">美元</option>
                                                 </select>
-                                                <input v-model.number="acc.balance" @change="saveData" type="number"
+                                                <input v-model.number="acc.balance" @change="saveData" @keydown.enter.prevent="$event.target.blur()" type="number"
                                                     class="edit-input !text-right w-24 !text-sm !font-bold tracking-wide mono"
                                                     :class="acc.type === 'asset' ? 'text-emerald-600' : 'text-rose-500'">
                                             </div>
@@ -363,33 +454,34 @@
 
                                 <tbody class="divide-y divide-slate-50">
                                     <!-- Split Summary -->
-                                    <tr class="bg-slate-100/50 font-black">
+                                    <tr class="asset-total-row bg-slate-100/50 font-black">
                                         <td class="px-6 py-3 text-[10px] text-[#777] uppercase tracking-widest">總資產
                                         </td>
                                         <td class="px-6 py-3 text-right text-sm mono text-[#333]">NT$ {{
                                             totalBankAssets.toLocaleString() }}</td>
                                         <td></td>
                                     </tr>
-                                    <tr class="bg-rose-50/20 font-black">
+                                    <tr class="asset-liability-row bg-rose-50/20 font-black">
                                         <td class="px-6 py-3 text-[10px] text-rose-500 uppercase tracking-widest">負債
                                             (Liabilities)</td>
                                         <td class="px-6 py-3 text-right text-sm mono text-rose-500">- NT$ {{
                                             totalLiabilities.toLocaleString() }}</td>
                                         <td></td>
                                     </tr>
-                                    <tr class="bg-white border border-[#EAE8E3] font-black">
+                                    <tr class="asset-cash-row bg-white border border-[#EAE8E3] font-black">
                                         <td class="px-6 py-5 text-sm text-indigo-500 uppercase tracking-widest">可用現金
                                             (Available Cash)
                                         </td>
-                                        <td class="px-6 py-5 text-right text-xl mono text-[#333]">NT$ {{
+                                        <td class="asset-cash-value px-6 py-5 text-right text-xl mono text-[#333]">NT$ {{
                                             availableCash.toLocaleString() }}</td>
                                         <td></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
 
                             <!-- Add Account Inline -->
-                            <div class="p-4 bg-[#FAF9F6] flex items-center gap-2">
+                            <div class="asset-add-row p-4 bg-[#FAF9F6] flex items-center gap-2">
                                 <input v-model="accountForm.name" placeholder="+ 名稱"
                                     class="flex-1 min-w-0 bg-white border border-[#EAE8E3] rounded-md px-3 py-1.5 text-xs font-bold outline-none">
                                 <select v-model="accountForm.currency"
@@ -402,11 +494,68 @@
                                     <option value="asset">資產</option>
                                     <option value="liability">負債</option>
                                 </select>
+                                <select v-model="accountForm.category" class="bg-white border border-[#EAE8E3] rounded-md px-2 py-1.5 text-xs font-bold outline-none">
+                                    <option value="general">自動分類</option>
+                                    <option value="cash">現金／活存</option>
+                                    <option value="deposit">定存</option>
+                                    <option value="investment">股票／基金</option>
+                                    <option value="crypto">加密資產</option>
+                                    <option value="policy">投資型保單</option>
+                                    <option value="other">其他資產</option>
+                                </select>
                                 <button @click="addAccount"
                                     class="bg-white border border-[#EAE8E3] text-[#333] hover:bg-[#FAF9F6] px-3 py-1.5 rounded-md text-xs font-black hover:bg-white border border-[#EAE8E3] transition-all">新增</button>
                             </div>
+                            </div>
+                            </div>
                         </div>
+
+                        <section class="asset-loan-card mt-5 glass rounded-md border-[#EAE8E3] overflow-hidden">
+                            <div class="asset-loan-head px-6 py-5 border-b border-[#EAE8E3] bg-[#FAF9F6]"><h3 class="text-sm font-black text-[#333]">信貸攤還與月付壓力</h3><p class="mt-1 text-[10px] font-bold text-[#777]">貸款餘額會列入負債；每月本息可選擇直接扣入五階段的現金流。</p></div>
+                            <div class="p-5 grid grid-cols-2 md:grid-cols-5 gap-2">
+                                <input v-model="loanForm.name" placeholder="信貸名稱" class="edit-input w-full text-xs">
+                                <input v-model.number="loanForm.principal" @keydown.enter.prevent="$event.target.blur()" type="number" placeholder="原始本金" class="edit-input w-full text-xs">
+                                <input v-model.number="loanForm.annualRate" @keydown.enter.prevent="$event.target.blur()" type="number" step="0.01" placeholder="年利率 %" class="edit-input w-full text-xs">
+                                <input v-model.number="loanForm.termMonths" @keydown.enter.prevent="$event.target.blur()" type="number" placeholder="總期數" class="edit-input w-full text-xs">
+                                <input v-model.number="loanForm.paidMonths" @keydown.enter.prevent="$event.target.blur()" type="number" placeholder="已繳期數" class="edit-input w-full text-xs">
+                            </div>
+                            <div class="asset-loan-footer px-5 pb-5 flex flex-wrap items-center gap-3"><label class="text-[11px] font-bold text-[#58716A] flex items-center gap-1"><input v-model="loanForm.includeInCashflow" type="checkbox"> 本息納入每月現金流</label><span class="text-[11px] text-[#777]">月付 NT$ {{ loanPreview.monthlyPayment.toLocaleString() }} ・ 剩餘本金 NT$ {{ loanPreview.remainingPrincipal.toLocaleString() }}</span><button @click="addLoan" class="ml-auto bg-[#173B36] text-white px-3 py-1.5 rounded-md text-xs font-black">加入信貸</button></div>
+                            <div v-if="loanAccounts.length" class="border-t border-[#EAE8E3] divide-y divide-[#EAE8E3]">
+                                <div v-for="loan in loanAccounts" :key="loan.name" class="asset-loan-item px-5 py-3 flex flex-wrap gap-3 items-center text-xs"><b class="text-[#333]">{{ loan.name }}</b><span class="text-rose-500 font-bold">剩餘 NT$ {{ getTwdBalance(loan).toLocaleString() }}</span><span>月付 NT$ {{ loanMonthlyPayment(loan).toLocaleString() }}</span><span class="text-[#58716A]">下期本金 NT$ {{ loanNextInstallment(loan).principal.toLocaleString() }} ・ 利息 NT$ {{ loanNextInstallment(loan).interest.toLocaleString() }}</span><label class="ml-auto text-[#777]">已繳 <input v-model.number="loan.paidMonths" @change="updateLoanBalance(loan)" @keydown.enter.prevent="$event.target.blur()" type="number" min="0" :max="loan.termMonths" class="edit-input w-14 text-center"> / {{ loan.termMonths }} 期</label><label class="text-[#777] flex items-center gap-1"><input v-model="loan.includeInCashflow" @change="saveData" type="checkbox"> 納入現金流</label></div>
+                            </div>
+                        </section>
                     </div>
+                </div>
+            </div>
+
+            <!-- ====== Wealth Path: reuses bankAccounts, history and Firebase sync ====== -->
+            <div v-if="currentView === 'wealth'" class="flex-1 overflow-y-auto custom-scrollbar p-1 animate-in slide-in-from-bottom duration-500">
+                <div class="wealth-shell">
+                    <section class="wealth-hero">
+                        <div class="wealth-main-hero"><div class="wealth-kicker">FREEDOM · YOUR WEALTH COMPASS</div><h2>你的下一步是<br><em>穩住結構，再加速前進。</em></h2><p>先讓安全感成為底座，才能把每一筆努力轉成可持續的自由。</p><div class="stage-pill"><i></i>目前位於：階段 {{ wealthStage }}｜財富{{ wealthStageName }}期</div></div>
+                        <div class="freedom-meter"><div><small>自由度・被動收入覆蓋生活費</small><strong>{{ wealthFreedomRate }}<span>%</span></strong><div class="meter-track"><i :style="{ width: wealthFreedomRate + '%' }"></i></div></div><p>距離理想生活，還有 {{ 100 - wealthFreedomRate }}% 的路程</p></div>
+                    </section>
+                    <div class="wealth-section-heading"><h3>今天的財富水位</h3><p>以你填寫的數字，指引當下真正重要的事</p></div>
+                    <section class="wealth-metrics">
+                        <article class="wealth-metric"><div class="wealth-metric-label">本月現金流 <i>↗</i></div><strong :style="{ color: wealthCashflow >= 0 ? '#173B36' : '#B75F51' }">{{ wealthCashflow >= 0 ? '+' : '' }}${{ wealthCashflow.toLocaleString() }}</strong><small>主動 ${{ wealthActiveIncome.toLocaleString() }} ・ 被動 ${{ wealthPassiveIncome.toLocaleString() }}{{ wealthLoanPayment ? ' ・ 信貸 -$' + wealthLoanPayment.toLocaleString() : '' }}</small></article>
+                        <article class="wealth-metric"><div class="wealth-metric-label">緊急預備金 <i>◒</i></div><strong>{{ wealthEmergencyMonths }} <span>個月</span></strong><small class="warn">目標：6 個月生活費</small></article>
+                        <article class="wealth-metric"><div class="wealth-metric-label">本月儲蓄率 <i>◎</i></div><strong>{{ wealthSavingRate }}<span>%</span></strong><small>維持在目標 25% 之上</small></article>
+                        <article class="wealth-metric"><div class="wealth-metric-label">投資資產占比 <i>◇</i></div><strong>{{ wealthInvestmentRate }}<span>%</span></strong><small>在安全底座完成後逐步提高</small></article>
+                    </section>
+                    <section class="wealth-link-strip" aria-label="資產負債表串接資料">
+                        <div class="wealth-link-item"><b>可用現金　NT$ {{ availableCash.toLocaleString() }}</b><span>已掛接資產表中勾選的帳戶</span></div>
+                        <div class="wealth-link-item"><b>總負債　NT$ {{ totalLiabilities.toLocaleString() }}</b><span>已掛接所有負債帳戶</span></div>
+                        <div class="wealth-link-item"><b>淨資產　NT$ {{ myNetAssets.toLocaleString() }}</b><span>總資產扣除總負債</span></div>
+                        <div class="wealth-link-item"><b>目前判斷　{{ wealthStageReason }}</b><span>資產負債表會即時更新此結果</span></div>
+                    </section>
+                    <section class="wealth-main-grid">
+                        <article class="wealth-panel"><h3>這一階段，先完成這些事</h3><p>你不需要同時做好所有事；優先完成眼前的結構。</p><label v-for="task in wealthTasks" :key="task.title" class="wealth-task"><input type="checkbox" class="wealth-check" v-model="task.done" @change="saveData"><span><b>{{ task.title }}</b><span>{{ task.detail }}</span></span><span class="task-state" :class="{ done: task.done }">{{ task.done ? '已完成' : task.title.includes('緊急') ? '進行中' : '待開始' }}</span></label></article>
+                        <article class="wealth-panel"><h3>你的財富地圖</h3><p>財富不是衝刺，是按順序完成一段段路。</p><div class="wealth-road"><div v-for="(stage, index) in wealthStages" :key="stage.name" class="wealth-stage" :class="{ done: index < wealthStage, active: index === wealthStage }"><div class="wealth-stage-dot">{{ index < wealthStage ? '✓' : index }}</div><b>{{ stage.name }}</b><span>{{ stage.sub }}</span></div></div><div class="wealth-focus"><b>{{ wealthStageName }}期焦點：</b>{{ wealthStageFocus }}</div></article>
+                    </section>
+                    <section class="wealth-bottom">
+                        <article class="safety-panel"><div class="wealth-kicker">NEXT MILESTONE</div><h3>安全底座完成度</h3><p>把緊急金補足到 6 個月，是你進入長期投資節奏前最踏實的一步。</p><div class="safety-bar-row"><div class="safety-bar-label"><span>緊急預備金</span><span>{{ wealthEmergencyMonths }} / 6 個月</span></div><div class="safety-bar"><i :style="{ width: wealthSafetyProgress + '%' }"></i></div></div><div class="safety-bar-row"><div class="safety-bar-label"><span>資產負債表</span><span>{{ bankAccounts.length ? '已建立' : '待建立' }}</span></div><div class="safety-bar"><i :style="{ width: bankAccounts.length ? '100%' : '0%' }"></i></div></div><div class="safety-bar-row"><div class="safety-bar-label"><span>負債／可用現金</span><span>{{ totalLiabilities ? wealthDebtToCashRatio + '%' : '無負債' }}</span></div><div class="safety-bar"><i :style="{ width: wealthDebtProgress + '%' }"></i></div></div></article>
+                        <article class="wealth-panel"><h3>收入與理想生活</h3><p>主動收入、股息與其他被動收入會自動加總，再扣掉生活支出與信貸月付。</p><div class="wealth-profile"><label>主動收入<input v-model.number="wealthProfile.activeIncome" @change="saveData" @keydown.enter.prevent="$event.target.blur()" type="number"></label><label>每月股息／配息<input v-model.number="wealthProfile.dividends" @change="saveData" @keydown.enter.prevent="$event.target.blur()" type="number"></label><label>其他被動收入<input v-model.number="wealthProfile.passiveOther" @change="saveData" @keydown.enter.prevent="$event.target.blur()" type="number"></label><label>本月生活支出<input v-model.number="wealthProfile.expense" @change="saveData" @keydown.enter.prevent="$event.target.blur()" type="number"></label><label>理想每月生活費<input v-model.number="wealthProfile.lifeCost" @change="saveData" @keydown.enter.prevent="$event.target.blur()" type="number"></label></div></article>
+                    </section>
                 </div>
             </div>
 
@@ -462,21 +611,43 @@
                     const storedView = localStorage.getItem('f_last_view');
                     if (storedView) safeLastView = storedView;
                 } catch (e) { }
+                let safeWealthProfile = { activeIncome: 85000, dividends: 0, passiveOther: 18000, expense: 66500, lifeCost: 75000 };
+                let safeWealthTasks = [
+                    { title: '建立每月收支快照', detail: '每月看見錢的流向，而非只看帳戶餘額', done: true },
+                    { title: '補足緊急預備金', detail: '以可用現金走向 6 個月生活費', done: false },
+                    { title: '建立年度收入升級計畫', detail: '為下一次加薪、轉職或副業訂出具體行動', done: false },
+                    { title: '整理帳戶與資產配置', detail: '確認每一筆錢都有清楚角色', done: false }
+                ];
+                try {
+                    const storedProfile = JSON.parse(localStorage.getItem('f_wealth_profile')) || {};
+                    safeWealthProfile = {
+                        ...safeWealthProfile,
+                        ...storedProfile,
+                        activeIncome: storedProfile.activeIncome ?? storedProfile.income ?? safeWealthProfile.activeIncome,
+                        passiveOther: storedProfile.passiveOther ?? storedProfile.passive ?? safeWealthProfile.passiveOther
+                    };
+                } catch (e) { }
+                try { safeWealthTasks = JSON.parse(localStorage.getItem('f_wealth_tasks')) || safeWealthTasks; } catch (e) { }
 
 
                 return {
-                    currentView: 'deposits',
+                    currentView: safeLastView === 'wealth' ? 'wealth' : 'deposits',
                     cash: safeCash,
                     stocks: [],
                     depositLogs: safeLogs,
                     reconcileForm: safeReconcile,
                     bankAccounts: safeBankAccounts,
                     history: JSON.parse(localStorage.getItem('f_history')) || [],
-                    accountForm: { name: '', balance: null, type: 'asset', currency: 'TWD' },
+                    accountForm: { name: '', balance: null, type: 'asset', currency: 'TWD', category: 'general' },
+                    loanForm: { name: '', principal: null, annualRate: null, termMonths: null, paidMonths: 0, includeInCashflow: true },
+                    wealthProfile: safeWealthProfile,
+                    wealthTasks: safeWealthTasks,
                     usdRate: safeUsdRate,
                     currentUser: null,
                     unsubscribeSnapshot: null,
                     isAutoSync: true,
+                    toolsOpen: false,
+                    trendPeriod: 'month',
                     autoSyncTimer: null,
                     indices: {},
                     draggingIdx: null,
@@ -515,10 +686,14 @@
                                     if (remoteTime > localTime) {
                                         this.bankAccounts = master.assets.bankAccounts || [];
                                         this.history = master.assets.history || [];
+                                        this.wealthProfile = this.normalizeWealthProfile(master.assets.wealthProfile || this.wealthProfile);
+                                        this.wealthTasks = master.assets.wealthTasks || this.wealthTasks;
                                         this.lastSyncTime = master.assets.updatedAt;
                                         // Save locally without triggering upload
                                         localStorage.setItem('f_banks', JSON.stringify(this.bankAccounts));
                                         localStorage.setItem('f_history', JSON.stringify(this.history));
+                                        localStorage.setItem('f_wealth_profile', JSON.stringify(this.wealthProfile));
+                                        localStorage.setItem('f_wealth_tasks', JSON.stringify(this.wealthTasks));
                                         if (this.currentView === 'deposits') this.updateChart();
                                     }
                                 }
@@ -553,6 +728,9 @@
                     localStorage.setItem('f_last_view', val);
                     if (val === 'deposits') { this.$nextTick(() => { this.updateChart(); }); }
                 },
+                trendPeriod() {
+                    if (this.currentView === 'deposits') this.$nextTick(() => this.updateHistoryChart());
+                },
                 stocks: {
                     handler() { if (this.currentView === 'deposits') { this.$nextTick(() => { this.updateChart(); }); } },
                     deep: true
@@ -562,6 +740,8 @@
             computed: {
                 getTwdBalance() {
                     return (acc) => {
+                        // 信貸餘額以攤還期表為唯一來源，避免舊快取 balance 與本金／利息明細不同步。
+                        if (acc.isLoan) return this.getLoanCalculation(acc).remainingPrincipal;
                         const rate = acc.currency === 'USD' ? this.usdRate : 1;
                         return (acc.balance || 0) * rate;
                     };
@@ -569,6 +749,29 @@
                 totalBankAssets() { return this.bankAccounts.filter(a => a.type === 'asset').reduce((sum, a) => sum + this.getTwdBalance(a), 0); },
                 totalLiabilities() { return this.bankAccounts.filter(a => a.type === 'liability').reduce((sum, a) => sum + this.getTwdBalance(a), 0); },
                 myNetAssets() { return this.totalBankAssets - this.totalLiabilities; },
+                trendSeries() {
+                    const grouped = new Map();
+                    this.history.forEach(item => {
+                        const rawDate = String(item.date || '').replace(' (最新)', '');
+                        const key = this.trendPeriod === 'year' ? rawDate.slice(0, 4) : this.trendPeriod === 'month' ? rawDate.slice(0, 7) : rawDate;
+                        if (key) grouped.set(key, { key, value: Number(item.value || 0), rawDate });
+                    });
+                    return Array.from(grouped.values()).map(item => ({
+                        value: item.value,
+                        label: this.trendPeriod === 'day' ? item.rawDate.slice(5).replace('-', '/') : this.trendPeriod === 'month' ? item.key.replace('-', '/') : item.key
+                    }));
+                },
+                assetCategorySummaries() {
+                    const summaryKeys = ['cash', 'deposit', 'investment', 'crypto', 'liability'];
+                    return summaryKeys.map(key => {
+                        const accounts = this.bankAccounts.filter(account => {
+                            const category = this.accountCategoryMeta(account).key;
+                            return key === 'investment' ? ['investment', 'policy'].includes(category) : category === key;
+                        });
+                        const meta = { cash: ['💧', '流動現金'], deposit: ['◒', '定期存款'], investment: ['↗', '股票／保單'], crypto: ['◈', '加密資產'], liability: ['−', '負債'] }[key];
+                        return { key, icon: meta[0], label: meta[1], count: accounts.length, amount: accounts.reduce((sum, account) => sum + this.getTwdBalance(account), 0) };
+                    });
+                },
                 availableCash() {
                     return this.bankAccounts.reduce((sum, a) => {
                         // 修正：必須明確為 true (有打勾) 才計算，避免 undefined 造成畫面與邏輯不一致
@@ -579,6 +782,27 @@
                         return sum;
                     }, 0);
                 },
+                loanPreview() { return this.getLoanCalculation(this.loanForm); },
+                loanAccounts() { return this.bankAccounts.filter(account => account.isLoan); },
+                wealthLoanPayment() { return this.loanAccounts.filter(loan => loan.includeInCashflow !== false).reduce((sum, loan) => sum + this.loanMonthlyPayment(loan), 0); },
+                wealthActiveIncome() { return Number(this.wealthProfile.activeIncome ?? this.wealthProfile.income ?? 0); },
+                wealthDividendIncome() { return Number(this.wealthProfile.dividends || 0); },
+                wealthOtherPassiveIncome() { return Number(this.wealthProfile.passiveOther ?? this.wealthProfile.passive ?? 0); },
+                wealthPassiveIncome() { return this.wealthDividendIncome + this.wealthOtherPassiveIncome; },
+                wealthMonthlyIncome() { return this.wealthActiveIncome + this.wealthPassiveIncome; },
+                wealthCashflow() { return this.wealthMonthlyIncome - Number(this.wealthProfile.expense || 0) - this.wealthLoanPayment; },
+                wealthEmergencyMonths() { const expense = Number(this.wealthProfile.expense || 0); return expense ? (this.availableCash / expense).toFixed(1) : '0.0'; },
+                wealthFreedomRate() { const lifeCost = Number(this.wealthProfile.lifeCost || 0); return lifeCost ? Math.min(100, Math.round((this.wealthPassiveIncome / lifeCost) * 100)) : 0; },
+                wealthSavingRate() { return this.wealthMonthlyIncome ? Math.max(0, Math.round((this.wealthCashflow / this.wealthMonthlyIncome) * 100)) : 0; },
+                wealthInvestmentRate() { return this.totalBankAssets ? Math.max(0, Math.round(((this.totalBankAssets - this.availableCash) / this.totalBankAssets) * 100)) : 0; },
+                wealthDebtToCashRatio() { return this.availableCash > 0 ? Math.round((this.totalLiabilities / this.availableCash) * 100) : (this.totalLiabilities > 0 ? 100 : 0); },
+                wealthDebtProgress() { return this.totalLiabilities ? Math.max(8, Math.min(100, 100 - this.wealthDebtToCashRatio)) : 100; },
+                wealthStageReason() { if (this.wealthCashflow <= 0) return '現金流未有結餘'; if (this.myNetAssets < 0) return '淨資產為負'; if (this.totalLiabilities > 0 && this.totalLiabilities > this.availableCash) return '負債高於可用現金'; if (Number(this.wealthEmergencyMonths) < 3) return '安全水位未滿 3 個月'; if (Number(this.wealthEmergencyMonths) < 6) return '正建立 6 個月安全水位'; return '安全底座已建立'; },
+                wealthStage() { const emergency = Number(this.wealthEmergencyMonths); if (this.wealthCashflow <= 0 || this.myNetAssets < 0 || (this.totalLiabilities > 0 && this.totalLiabilities > this.availableCash)) return 0; if (emergency < 3) return 1; if (emergency < 6) return 2; if (this.wealthFreedomRate < 100) return 3; return 4; },
+                wealthStageName() { return ['負數', '保障', '穩定', '增長', '自由'][this.wealthStage]; },
+                wealthStages() { return [{ name: '負數期', sub: '理清現金流' }, { name: '保障期', sub: '安全底座' }, { name: '穩定期', sub: '收入與儲蓄' }, { name: '增長期', sub: '配置與紀律' }, { name: '自由期', sub: '守成與選擇' }]; },
+                wealthStageFocus() { return ['先停止現金流失血，整理收支並優先處理高息債務。', '先建立基本保障與 3–6 個月緊急預備金，讓意外不會迫使你賣出資產。', '收入增加時，讓儲蓄和資產結構一起成長，而不只是提高消費水準。', '用資產配置和投資紀律創造複利，而不是追逐下一個熱門標的。', '讓資產支持生活選擇，並開始思考傳承、價值與時間如何使用。'][this.wealthStage]; },
+                wealthSafetyProgress() { return Math.min(100, Math.round((Number(this.wealthEmergencyMonths) / 6) * 100)); },
 
                 aiStrategy() { return null; },
                 strategySimulation() { return []; }
@@ -586,7 +810,36 @@
 
             methods: {
                 // =============== [Sync Logic] ===============
+                accountCategoryMeta(account) {
+                    if (account.type === 'liability') return { key: 'liability', label: account.isLoan ? '信貸' : '負債' };
+                    const explicit = account.category;
+                    let key = explicit && explicit !== 'general' ? explicit : '';
+                    if (!key) {
+                        const name = String(account.name || '').toLowerCase();
+                        if (/加密|crypto|幣/.test(name)) key = 'crypto';
+                        else if (/台股|美股|證券|股票|基金|投資/.test(name)) key = 'investment';
+                        else if (/定存/.test(name)) key = 'deposit';
+                        else if (/保單|保險/.test(name)) key = 'policy';
+                        else if (/活存|現金|銀行|bank|台新|永豐|將來|郵局/.test(name)) key = 'cash';
+                        else key = 'other';
+                    }
+                    const labels = { cash: '現金／活存', deposit: '定存', investment: '股票投資', crypto: '加密資產', policy: '投資型保單', other: '其他資產' };
+                    return { key, label: labels[key] || labels.other };
+                },
+                normalizeWealthProfile(profile) {
+                    const current = profile || {};
+                    return {
+                        activeIncome: Number(current.activeIncome ?? current.income ?? 0),
+                        dividends: Number(current.dividends || 0),
+                        passiveOther: Number(current.passiveOther ?? current.passive ?? 0),
+                        expense: Number(current.expense || 0),
+                        lifeCost: Number(current.lifeCost || 0)
+                    };
+                },
                 saveData() {
+                    this.bankAccounts.forEach(account => {
+                        if (account.isLoan) account.balance = this.getLoanCalculation(account).remainingPrincipal;
+                    });
                     localStorage.setItem('f_data', JSON.stringify(this.stocks));
                     localStorage.setItem('f_cash', this.cash);
                     localStorage.setItem('f_deps', JSON.stringify(this.depositLogs));
@@ -594,6 +847,8 @@
                     localStorage.setItem('f_banks', JSON.stringify(this.bankAccounts));
                     localStorage.setItem('f_history', JSON.stringify(this.history));
                     localStorage.setItem('f_usd_rate', this.usdRate);
+                    localStorage.setItem('f_wealth_profile', JSON.stringify(this.wealthProfile));
+                    localStorage.setItem('f_wealth_tasks', JSON.stringify(this.wealthTasks));
 
                     // Trigger Auto Sync
                     if (this.isAutoSync && this.currentUser) {
@@ -634,6 +889,8 @@
                         history: this.history,
                         cash: this.cash,
                         reconcile: this.reconcileForm,
+                        wealthProfile: this.wealthProfile,
+                        wealthTasks: this.wealthTasks,
                         updatedAt: this.lastSyncTime
                     };
 
@@ -669,6 +926,8 @@
                                 if (proceed) {
                                     this.bankAccounts = master.assets.bankAccounts || [];
                                     this.history = master.assets.history || [];
+                                    this.wealthProfile = this.normalizeWealthProfile(master.assets.wealthProfile || this.wealthProfile);
+                                    this.wealthTasks = master.assets.wealthTasks || this.wealthTasks;
                                     this.lastSyncTime = master.assets.updatedAt;
                                     this.saveData();
                                     this.syncStatus = '還原成功';
@@ -801,9 +1060,54 @@
                 addAccount() {
                     if (!this.accountForm.name) return;
                     this.bankAccounts.push({ ...this.accountForm });
-                    this.accountForm = { name: '', balance: null, type: 'asset', currency: 'TWD' };
+                    this.accountForm = { name: '', balance: null, type: 'asset', currency: 'TWD', category: 'general' };
                     this.saveData();
                 },
+                getLoanCalculation(loan) {
+                    const principal = Math.max(0, Number(loan.principal || 0));
+                    const months = Math.max(1, Number(loan.termMonths || 1));
+                    const paidMonths = Math.min(months, Math.max(0, Number(loan.paidMonths || 0)));
+                    const annualRate = Math.max(0, Number(loan.annualRate || 0)) / 100;
+                    const monthlyRate = annualRate / 12;
+                    const startDate = new Date(`${loan.startDate || '2026-05-28'}T00:00:00Z`);
+                    const firstPaymentDate = new Date(Date.UTC(startDate.getUTCFullYear(), startDate.getUTCMonth() + 1, startDate.getUTCDate()));
+                    const firstPeriodDays = Math.max(1, Math.round((firstPaymentDate - startDate) / 86400000));
+                    const firstPeriodGrowth = Math.pow(1 + annualRate / 365, firstPeriodDays);
+                    const monthlyPayment = monthlyRate ? principal * firstPeriodGrowth * monthlyRate * Math.pow(1 + monthlyRate, months - 1) / (Math.pow(1 + monthlyRate, months) - 1) : principal / months;
+                    const fixedPayment = Math.ceil(monthlyPayment);
+                    const schedule = this.buildLoanSchedule({ ...loan, principal, annualRate, termMonths: months, startDate: loan.startDate || '2026-05-28' }, fixedPayment);
+                    const remainingPrincipal = paidMonths ? schedule[paidMonths - 1].remainingPrincipal : principal;
+                    return { monthlyPayment: fixedPayment, remainingPrincipal: Math.max(0, remainingPrincipal), schedule };
+                },
+                buildLoanSchedule(loan, fixedPayment) {
+                    const startDate = new Date(`${loan.startDate}T00:00:00Z`);
+                    const annualRate = Number(loan.annualRate || 0);
+                    let remainingPrincipal = Number(loan.principal || 0);
+                    const schedule = [];
+                    let previousDate = startDate;
+                    for (let installment = 1; installment <= Number(loan.termMonths || 0); installment++) {
+                        const paymentDate = new Date(Date.UTC(startDate.getUTCFullYear(), startDate.getUTCMonth() + installment, startDate.getUTCDate()));
+                        const days = Math.round((paymentDate - previousDate) / 86400000);
+                        const daysInYear = (paymentDate.getUTCFullYear() % 4 === 0 && (paymentDate.getUTCFullYear() % 100 !== 0 || paymentDate.getUTCFullYear() % 400 === 0)) ? 366 : 365;
+                        const interest = Math.round(remainingPrincipal * annualRate * days / daysInYear);
+                        const principal = Math.min(remainingPrincipal, Math.max(0, fixedPayment - interest));
+                        remainingPrincipal = Math.max(0, remainingPrincipal - principal);
+                        schedule.push({ paymentDate: paymentDate.toISOString().slice(0, 10), principal, interest, remainingPrincipal });
+                        previousDate = paymentDate;
+                    }
+                    return schedule;
+                },
+                loanMonthlyPayment(loan) { return this.getLoanCalculation(loan).monthlyPayment; },
+                loanNextInstallment(loan) { return this.getLoanCalculation(loan).schedule[Math.min(Number(loan.paidMonths || 0), Number(loan.termMonths || 1) - 1)] || { principal: 0, interest: 0 }; },
+                addLoan() {
+                    if (!this.loanForm.name || !this.loanForm.principal || !this.loanForm.termMonths) return alert('請填寫信貸名稱、原始本金與總期數');
+                    const newLoan = { ...this.loanForm, startDate: new Date().toISOString().slice(0, 10) };
+                    const calculation = this.getLoanCalculation(newLoan);
+                    this.bankAccounts.push({ name: this.loanForm.name, balance: calculation.remainingPrincipal, type: 'liability', currency: 'TWD', isLoan: true, ...newLoan });
+                    this.loanForm = { name: '', principal: null, annualRate: null, termMonths: null, paidMonths: 0, includeInCashflow: true };
+                    this.saveData();
+                },
+                updateLoanBalance(loan) { loan.balance = this.getLoanCalculation(loan).remainingPrincipal; this.saveData(); },
                 removeAccount(idx) {
                     if (confirm('確定移除此帳戶？')) {
                         this.bankAccounts.splice(idx, 1);
@@ -844,54 +1148,53 @@
                     reader.onload = (ev) => {
                         const data = new Uint8Array(ev.target.result);
                         const workbook = XLSX.read(data, { type: 'array' });
+                        const structuredSheetName = workbook.SheetNames.find(name => name === '帳戶資料');
+                        if (structuredSheetName) {
+                            const structuredRows = XLSX.utils.sheet_to_json(workbook.Sheets[structuredSheetName], { header: 1, defval: '' });
+                            if (structuredRows[0] && structuredRows[0].includes('帳戶類型') && structuredRows[0].includes('金額')) {
+                                this.importStructuredExcel(workbook, e);
+                                return;
+                            }
+                        }
                         const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
                         const json = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
 
                         if (json.length < 2) return alert('Excel 格式錯誤');
 
-                        // 1. 解析日期 (第一行)
+                        // 1. 解析日期與最後一個有效資料欄
                         const rawDates = json[0].slice(2);
-                        const dates = rawDates.filter(d => d);
-                        const latestColIdx = rawDates.lastIndexOf(dates[dates.length - 1]) + 2;
+                        const dateColumns = rawDates
+                            .map((date, index) => ({ date, column: index + 2 }))
+                            .filter(item => item.date !== undefined && item.date !== null && String(item.date).trim() !== '');
+                        if (!dateColumns.length) return alert('找不到日期欄，請確認 Excel 格式');
+                        const latestColIdx = dateColumns[dateColumns.length - 1].column;
+                        const hasNumber = value => value !== undefined && value !== null && String(value).trim() !== '' && Number.isFinite(Number(value));
 
-                        // 2. 同步並新增銀行帳戶
+                        // 2. 先完整解析，再一次取代舊帳戶：不會殘留任何舊資料
                         const excludeRows = ['總資產', '剩餘', '動用', '黃金', '投資', '保險', '遠雄', '全球', '新光'];
+                        const importedAccounts = [];
                         let currentType = 'asset';
-
-                        json.forEach((row, rowIdx) => {
+                        json.forEach(row => {
                             const name = row[0] ? row[0].toString().trim() : '';
-                            if (!name || excludeRows.includes(name)) {
-                                if (name === '總資產') currentType = 'liability';
-                                return;
-                            }
+                            if (name === '總資產') { currentType = 'liability'; return; }
+                            if (!name || excludeRows.includes(name)) return;
+
+                            const latestValue = row[latestColIdx];
+                            if (!hasNumber(latestValue) || Number(latestValue) === 0) return;
 
                             const currency = row[1] && row[1].toString().trim() !== '' ? row[1].toString().trim() : 'TWD';
-                            let finalType = currentType;
-                            if (name.includes('卡費') || name.includes('負債') || name.includes('貸')) finalType = 'liability';
-
-                            let acc = this.bankAccounts.find(a => a.name.trim() === name);
-                            let latestBalance = row[latestColIdx] !== undefined ? (Number(row[latestColIdx]) || 0) : 0;
-                            
-                            if (!acc) {
-                                // 如果是已經被刪除的銀行（不在目前的 bankAccounts 裡），且最新的餘額是 0，就不要把它加回來
-                                if (latestBalance !== 0) {
-                                    acc = { name: name, balance: latestBalance, type: finalType, currency: currency };
-                                    this.bankAccounts.push(acc);
-                                }
-                            } else {
-                                acc.currency = currency;
-                                acc.balance = latestBalance;
-                            }
+                            const type = (name.includes('卡費') || name.includes('負債') || name.includes('貸')) ? 'liability' : currentType;
+                            importedAccounts.push({ name, balance: Number(latestValue), type, currency });
                         });
+                        if (!importedAccounts.length) return alert('找不到可匯入的帳戶數值，舊資料沒有被變更');
 
-                        // 3. 尋找「剩餘」行 (對應歷史紀錄)
+                        // 3. 匯入淨資產歷史；沒有「剩餘」列時也會清空舊歷史，避免混用資料來源
                         const netRow = json.find(row => row[0] && row[0].toString().includes('剩餘'));
-
+                        let importedHistory = [];
                         if (netRow) {
-                            const values = netRow.slice(2);
-                            const importedHistory = [];
-                            dates.forEach((date, i) => {
-                                if (values[i] !== undefined) {
+                            dateColumns.forEach(({ date, column }) => {
+                                const netValue = netRow[column];
+                                if (hasNumber(netValue)) {
                                     let dStr = date;
                                     if (typeof date === 'string') {
                                         dStr = date.replace(' (最新)', '');
@@ -904,28 +1207,93 @@
                                     const details = {};
                                     json.forEach(r => {
                                         const rName = r[0] ? r[0].toString().trim() : '';
-                                        if (rName && !excludeRows.includes(rName)) {
-                                            details[rName] = Number(r[i + 2]) || 0;
+                                        if (rName && !excludeRows.includes(rName) && rName !== '總資產' && hasNumber(r[column]) && Number(r[column]) !== 0) {
+                                            details[rName] = Number(r[column]);
                                         }
                                     });
 
                                     importedHistory.push({
                                         date: dStr,
-                                        value: Number(values[i]),
+                                        value: Number(netValue),
                                         details: details
                                     });
                                 }
                             });
-                            this.history = importedHistory;
-                            this.saveData();
-                            this.currentView = 'deposits';
-                            this.$nextTick(() => this.updateChart());
-                            alert(`成功匯入 ${importedHistory.length} 筆歷史紀錄（含帳戶細節）`);
-                        } else {
-                            alert('找不到「剩餘」行，請確認 Excel 格式');
                         }
+
+                        if (!confirm(`即將完全取代目前 ${this.bankAccounts.length} 個帳戶與 ${this.history.length} 筆歷史紀錄。\n\n將匯入 ${importedAccounts.length} 個帳戶與 ${importedHistory.length} 筆歷史紀錄，是否繼續？`)) return;
+                        this.bankAccounts = importedAccounts;
+                        this.history = importedHistory;
+                        this.saveData();
+                        this.currentView = 'deposits';
+                        this.$nextTick(() => this.updateChart());
+                        e.target.value = '';
+                        alert(`完成完整匯入：${importedAccounts.length} 個帳戶、${importedHistory.length} 筆歷史紀錄。舊資料已移除。`);
                     };
                     reader.readAsArrayBuffer(file);
+                },
+
+                importStructuredExcel(workbook, event) {
+                    const accountRows = XLSX.utils.sheet_to_json(workbook.Sheets['帳戶資料'], { header: 1, defval: '' });
+                    const headers = accountRows[0];
+                    const column = name => headers.indexOf(name);
+                    const cell = (row, name) => row[column(name)];
+                    const asNumber = value => Number.isFinite(Number(value)) ? Number(value) : 0;
+                    const asBoolean = value => value === true || value === 1 || ['是', 'true', 'TRUE', '1'].includes(String(value).trim());
+                    const importedAccounts = accountRows.slice(1).map(row => {
+                        const name = String(cell(row, '帳戶名稱') || '').trim();
+                        const balance = asNumber(cell(row, '金額'));
+                        if (!name || balance === 0) return null;
+                        const typeValue = String(cell(row, '帳戶類型') || '資產').trim();
+                        const isLoan = asBoolean(cell(row, '信貸'));
+                        const account = {
+                            name,
+                            type: typeValue === '負債' || typeValue === 'liability' ? 'liability' : 'asset',
+                            category: String(cell(row, '分類') || 'general').trim(),
+                            currency: String(cell(row, '幣別') || 'TWD').trim(),
+                            balance,
+                            checked: asBoolean(cell(row, '納入可用現金')),
+                            isLoan
+                        };
+                        if (isLoan) {
+                            account.principal = asNumber(cell(row, '原始本金'));
+                            account.annualRate = asNumber(cell(row, '年利率(%)'));
+                            account.termMonths = asNumber(cell(row, '總期數'));
+                            account.paidMonths = asNumber(cell(row, '已繳期數'));
+                            account.startDate = this.readExcelDate(cell(row, '撥款日')) || '2026-05-28';
+                            account.includeInCashflow = asBoolean(cell(row, '月付納入現金流'));
+                        }
+                        return account;
+                    }).filter(Boolean);
+                    if (!importedAccounts.length) return alert('找不到可匯入的非零帳戶，舊資料沒有被變更');
+
+                    let importedHistory = [];
+                    if (workbook.Sheets['歷史紀錄']) {
+                        const historyRows = XLSX.utils.sheet_to_json(workbook.Sheets['歷史紀錄'], { defval: '' });
+                        importedHistory = historyRows.map(row => {
+                            const date = this.readExcelDate(row['日期']);
+                            const value = Number(row['淨資產']);
+                            if (!date || !Number.isFinite(value)) return null;
+                            let details = {};
+                            try { details = row['帳戶明細(JSON)'] ? JSON.parse(row['帳戶明細(JSON)']) : {}; } catch (err) { details = {}; }
+                            return { date, value, details };
+                        }).filter(Boolean);
+                    }
+                    if (!confirm(`即將完整取代目前 ${this.bankAccounts.length} 個帳戶與 ${this.history.length} 筆歷史紀錄。\n\n將匯入 ${importedAccounts.length} 個帳戶與 ${importedHistory.length} 筆歷史紀錄，是否繼續？`)) return;
+                    this.bankAccounts = importedAccounts;
+                    this.history = importedHistory;
+                    this.saveData();
+                    this.currentView = 'deposits';
+                    this.$nextTick(() => this.updateChart());
+                    event.target.value = '';
+                    alert(`完成完整匯入：${importedAccounts.length} 個帳戶、${importedHistory.length} 筆歷史紀錄。`);
+                },
+
+                readExcelDate(value) {
+                    if (!value && value !== 0) return '';
+                    if (value instanceof Date && !Number.isNaN(value.getTime())) return value.toISOString().slice(0, 10);
+                    if (typeof value === 'number') return new Date((value - 25569) * 86400000).toISOString().slice(0, 10);
+                    return String(value).replace(' (最新)', '').trim();
                 },
 
                 exportExcel() {
@@ -936,13 +1304,41 @@
                     const hasToday = exportHistory.some(h => h.date === today);
                     if (!hasToday) {
                         const currentDetails = {};
-                        this.bankAccounts.forEach(acc => currentDetails[acc.name] = acc.balance);
+                        this.bankAccounts.forEach(acc => currentDetails[acc.name] = this.getTwdBalance(acc));
                         exportHistory.push({
                             date: today,
                             value: this.myNetAssets,
                             details: currentDetails
                         });
                     }
+
+                    // 新版完整備份：帳戶設定與信貸欄位可原樣匯回。
+                    const wb = XLSX.utils.book_new();
+                    const accountHeaders = ['帳戶名稱', '帳戶類型', '分類', '幣別', '金額', '納入可用現金', '信貸', '原始本金', '年利率(%)', '總期數', '已繳期數', '撥款日', '月付納入現金流'];
+                    const accountRows = this.bankAccounts.map(account => [
+                        account.name,
+                        account.type === 'liability' ? '負債' : '資產',
+                        this.accountCategoryMeta(account).key,
+                        account.currency || 'TWD',
+                        this.getTwdBalance(account),
+                        account.checked ? '是' : '否',
+                        account.isLoan ? '是' : '否',
+                        account.isLoan ? Number(account.principal || 0) : '',
+                        account.isLoan ? Number(account.annualRate || 0) : '',
+                        account.isLoan ? Number(account.termMonths || 0) : '',
+                        account.isLoan ? Number(account.paidMonths || 0) : '',
+                        account.isLoan ? (account.startDate || '') : '',
+                        account.isLoan && account.includeInCashflow !== false ? '是' : '否'
+                    ]);
+                    const accountsSheet = XLSX.utils.aoa_to_sheet([accountHeaders, ...accountRows]);
+                    accountsSheet['!cols'] = [18, 12, 14, 9, 16, 15, 9, 16, 12, 11, 11, 14, 17].map(wch => ({ wch }));
+                    XLSX.utils.book_append_sheet(wb, accountsSheet, '帳戶資料');
+
+                    const historyHeaders = ['日期', '淨資產', '帳戶明細(JSON)'];
+                    const historyRows = exportHistory.map(item => [item.date, item.value, JSON.stringify(item.details || {})]);
+                    const historySheet = XLSX.utils.aoa_to_sheet([historyHeaders, ...historyRows]);
+                    historySheet['!cols'] = [{ wch: 14 }, { wch: 16 }, { wch: 80 }];
+                    XLSX.utils.book_append_sheet(wb, historySheet, '歷史紀錄');
 
                     const historyDates = exportHistory.map(h => h.date);
                     const header = ['帳戶名稱', '幣別', ...historyDates];
@@ -1020,7 +1416,6 @@
                     rows.push(netRow);
 
                     const ws = XLSX.utils.aoa_to_sheet([header, ...rows]);
-                    const wb = XLSX.utils.book_new();
                     XLSX.utils.book_append_sheet(wb, ws, "Asset_Backup");
                     XLSX.writeFile(wb, `資產紀錄_${today}.xlsx`);
                 },
@@ -1064,10 +1459,10 @@
                     this.historyChart = new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: this.history.map(h => h.date),
+                            labels: this.trendSeries.map(item => item.label),
                             datasets: [{
                                 label: '淨資產趨勢',
-                                data: this.history.map(h => h.value),
+                                data: this.trendSeries.map(item => item.value),
                                 borderColor: '#6366f1',
                                 backgroundColor: 'rgba(99, 102, 241, 0.1)',
                                 fill: true,
@@ -1079,10 +1474,12 @@
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
+                            font: { family: 'Inter, Helvetica Neue, Arial, sans-serif', weight: '700' },
                             plugins: { legend: { display: false } },
+                            layout: { padding: { bottom: 8 } },
                             scales: {
-                                y: { beginAtZero: false, grid: { display: false } },
-                                x: { grid: { display: false } }
+                                y: { beginAtZero: false, grid: { display: false }, ticks: { font: { family: 'Inter, Helvetica Neue, Arial, sans-serif', weight: '700' } } },
+                                x: { grid: { display: false }, ticks: { font: { family: 'Inter, Helvetica Neue, Arial, sans-serif', weight: '700' }, padding: 7, maxRotation: 0, minRotation: 0, autoSkip: true, maxTicksLimit: this.trendPeriod === 'day' ? 10 : 12 } }
                             }
                         }
                     });
